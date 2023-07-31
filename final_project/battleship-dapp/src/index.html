@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title style="text-align: center;">BattleShip</title>
+
+    <!-- Bootstrap -->
+    <script type="text/javascript" href="js/App.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <link rel="shortcut icon" href="#">
+  </head>
+  <body>
+    <!-- title -->
+    <div style="margin-left: 10px;">
+      <h2>Battleship-game</h2>
+      <p id="accountAddress"></p>
+    </div>
+
+    <div class="three-columns-grid">
+      <!-- FIRST COLUMN -->
+      <div>
+        <div style="background-color: lightblue;";>
+          <div style="margin-left: 10px;">
+            <p style="font-size: 20px;">New Game</p>
+            <!-- set dimension -->
+            <div id="dim-div">
+              <p style="display: inline-block;">Board Dimension</p>
+              <input class="form-group form-group-lg" id="dimen" type="number" value="2" name="dimension" min="2" max="10" step="2" style="width: 50px;">
+              <button class="btn btn-xs" id="dimBtn" type="button" style="font-size: 12px" onclick="App.newgame()">NEW GAME</button>
+            </div>
+            <!-- Join Game with ID -->
+            <div>
+              <p style="display: inline-block;">Join Game with ID</p>
+              <input id="insert-id" type="number" value="0" name="dimension" min="0" style="width: 50px;">
+              <button class="btn btn-xs" id="joinBtn" type="button" style="font-size: 12px" onclick="App.joinGame()">JOIN</button>
+            </div>
+            <!-- Join Game casual -->
+            <div>
+              <p style="display: inline-block;">Join Casual Game</p>
+              <button class="btn btn-xs" id="joincasualBtn" type="button" style="font-size: 12px" onclick="App.joincasualGame()">JOIN</button>
+            </div>
+            <div>
+            <!-- stake-proposal -->
+              <div id="stake-div">
+                <p style="font-size: 20px;">Stake Decision</p>
+                <p style="display: inline-block;">Propose Stake (Wei)</p>
+                <input id="stake-set" type="number" value="1000000000000000000" name="dimension" min="0" step="100000000" style="width: 200px;">
+                <button class="btn btn-xs" id="stackBtn" type="button" style="font-size: 12px" onclick="App.proposestake()">CLICK</button>
+                <div><ul id="list-stake"></ul></div>
+              </div>
+            </div>
+            <div>
+              <!-- set root -->
+            <div id="root-div">
+              <p style="font-size: 20px;">Set Root</p>
+              <p style="display: inline-block;">Set Root</p>
+              <button class="btn btn-xs" id="start-button" type="button" style="font-size: 12px" onclick="App.setroot()" disabled>CLICK</button>
+            </div>
+            </div>
+            <p style="font-size: 20px;">Transfer Wei</p>
+            <!-- recover-wei -->
+            <div id="recover-div">
+              <p style="display: inline-block;">Recover Wei</p>
+              <button class="btn btn-xs" id="recoverBtn" type="button" style="font-size: 12px" onclick="App.recoverwei()">CLICK</button>
+            </div>
+            <!-- transfer-wei -->
+            <div id="transfer-div">
+              <p style="display: inline-block;">Transfer Wei</p>
+              <button class="btn btn-xs" id="ethBtn" type="button" style="font-size: 12px" onclick="App.transferwei()">CLICK</button>
+            </div>
+            <div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- SECOND COLUMN -->
+      <div>
+          <div style="margin-left: 10px;">
+            <p style="font-size: 20px;">Accuse Adversary</p>
+              <!-- accuse_adversary -->
+              <div>
+                <p style="display: inline-block;">Accuse Adversary</p>
+                <button class="btn btn-xs" id="accuse-button" type="button" style="font-size: 12px" onclick="App.accuseadversary()">CLICK</button>
+                <p id="id-accuse"></p>
+              </div>
+              <!-- reward accuser -->
+              <div>
+                <p style="display: inline-block;">Reward Accuser</p>
+                <button class="btn btn-xs" id="accuser-button" type="button" style="font-size: 12px" onclick="App.rewardaccuser()">CLICK</button>
+                <p id="id-accuser"></p>
+              </div>
+            <p style="font-size: 20px;">Torpedo</p>
+            <!-- launch torpedo -->
+            <div id="launch-div">
+              <p style="display: inline-block;">Launch Torpedo:</p>
+              X <input id="x-launch" type="number" value="0" name="dimension" min="0" style="width: 50px;">
+              Y <input id="y-launch" type="number" value="0" name="dimension" min="0" style="width: 50px;">
+              <button class="btn btn-xs" id="launch-button" type="button" style="font-size: 12px" onclick="App.launchtorpedo()">CLICK</button>
+              <div><ul id="list-torpedo"></ul></div>
+            </div>
+            <!-- reply torpedo -->
+            <div id="reply-div">
+              <p style="display: inline-block;">Reply Torpedo:</p>
+              X <input id="x-reply" type="number" value="0" name="dimension" min="0" style="width: 50px;">
+              Y <input id="y-reply" type="number" value="0" name="dimension" min="0" style="width: 50px;">
+              result(miss: 0, hit: 1) <input id="reply-result" type="number" name="dimension" value="0" min="0" max="1" style="width: 50px;">
+              <button class="btn btn-xs" id="reply-button" type="button" style="font-size: 12px" onclick="App.replytorpedo()">CLICK</button>
+              <div><ul id="list-reply"></ul></div>
+            </div>
+            <!-- verify-winner -->
+            <div>
+              <p style="font-size: 20px;">Winner</p>
+              <p style="display: inline-block;">Verify Winner</p>
+              <button class="btn btn-xs"id="verify-button" type="button" style="font-size: 12px" onclick="App.verifywinner()">CLICK</button>
+              <p id="verify-winner"></p>
+            </div>
+            <!-- next_block -->
+            <div>
+              <p style="font-size: 20px;">Debug</p>
+              <p style="display: inline-block;">Next Block</p>
+              <button class="btn btn-xs"id="nextblock-button" type="button" style="font-size: 12px" onclick="App.nextblock()">CLICK</button>
+              
+              <!-- debug -->
+              <div id="debug">
+                <p style="display: inline-block;">Matrix print</p>
+                <button class="btn btn-xs" id="debug-button" type="button" style="font-size: 12px" onclick="App.debug()" disabled>CLICK</button>
+              </div>
+            </div>
+      </div>
+      <!-- THIRD COLUMN -->
+      </div>
+        <!-- game-info -->
+        <div style="background-color: lightblue;">
+          <div style="margin-left:10px; text-align: center;">
+            <p style="font-size: 20px;">Game-Info</p>
+            <div style="font-size: 18px;">
+              <p id="game-id">game-id:</p>
+              <p id="board-dim">board-dim:</p>
+              <p id="game-state">game-state:</p>
+              <p id="game-turn">turn:</p>
+              <p id="game-winner">winner:</p>
+              <p id="reward-winner">reward:</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+    <!-- grid game (left board) -->
+    <div class="grid-game" id="grid-game">
+      <div style="background-color: white;">
+        <!-- left-board -->
+        <div>
+          <div class="gamesboard-container"; id="board1"; style="margin-left: 100px;"></div>
+        </div>
+      </div>
+      <!-- right-board -->
+      <div style="background-color: white;">
+        <div>
+          <div class="gamesboard-container"; id="board2"; style="margin-left: 100px;"></div>
+        </div>
+      </div>
+      <div style="margin-left: 5px;"><p id="my-board"></p></div>
+      <div style="margin-left: 5px;"><p id="opponent-board"></p></div>
+    </div>
+
+    <div class="option-container"></div>
+
+    <button id="flip-button" style="visibility: hidden;" onclick="App.flip()">FLIP</button>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script src="js/truffle-contract.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/keccak256@latest/keccak256.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/merkletreejs@latest/merkletree.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
