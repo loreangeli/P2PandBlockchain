@@ -1,8 +1,6 @@
 # P2PandBlockchain
 
-This repository contains the final project of the course Peer2Peer Systems and Blockchain at the University of Pisa (AA 2022/2023).
-
-The final project is a Distributed application revolving around the smart contracts built in the final term.
+This repository contains the final project of the course Peer2Peer Systems and Blockchain at the University of Pisa (AA 2022/2023). The final project is a Distributed application revolving around the smart contracts built in the final term.
 
 The Battleship board game is played by two players who cannot see each others’ board until the end of the game. The game operates on hidden information, and that hidden state influences  each action taken by the players. The game is divided into two phases: during the placement phase, each player places k ships of varying lengths and of constant width on their board, a n X n matrix which represents a coarse discretization of the ocean. After the first phase, the game proceeds to the shooting phase, which consists of players taking turns and making guesses about the location of the ships on the 
 opponent’s board (referred to as launching a torpedo). The guess consists of telling the opponents the coordinates [i,j] of a zone of the board. If any of the opponent’s ships are at that 
